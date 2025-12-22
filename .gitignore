@@ -361,3 +361,87 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+artifacts/
+publish/
+
+# .NET / NuGet
+*.nupkg
+.nuget/
+project.lock.json
+project.fragment.lock.json
+*.runtimeconfig.dev.json
+.dotnet/tools/
+
+# Razor / ASP.NET Core
+wwwroot/node_modules/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.Publish.xml
+*.azurePubxml
+*.pubxml.user
+
+# Secrets and config local overrides
+secrets.json
+**/secrets.json
+appsettings.*.Local.json
+appsettings.*.Secrets.json
+
+# Database files
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+# Test results / coverage
+TestResults/
+coverage/
+*.trx
+
+# Logs
+*.log
+logs/
+
+# Package managers
+packages/
+.vs/packagemanager/
+.pnpm-store/
+.yarn-integrity
+
+# Rider / ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# IDE files
+*.ide
+*.sln.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Temporary files
+*.tmp
+*.temp
+*.vsix
