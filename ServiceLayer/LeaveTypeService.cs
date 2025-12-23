@@ -2,7 +2,6 @@
 using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.Models.LeaveType;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LeaveManagementSystem.Web.ServiceLayer
 {
