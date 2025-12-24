@@ -3,25 +3,8 @@ using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.Models.LeaveType;
 using Microsoft.EntityFrameworkCore;
 
-namespace LeaveManagementSystem.Web.ServiceLayer
+namespace LeaveManagementSystem.Web.ServiceLayer.LeaveType
 {
-
-
-    public interface ILeaveTypeService
-    {
-        Task<IEnumerable<LeaveReadOnlyViewModel>> GetAllLeaveAsnyc();
-
-        Task<T?> GetByIdAsync<T>(int id) where T: class;
-
-        Task Create(LeaveTypeCreateVM leaveTypeCreateVm);
-
-        Task Edit(LeaveTypeEditVM leaveTypeEditVm);
-
-        Task Remove(int id);
-        bool LeaveTypeExists(int id);
-        bool CheckLeaveNameTypeExist(LeaveTypeEditVM leaveTypeEditVM);
-        bool CheckLeaveNameTypeExist(string name);
-    }
 
 
     public class LeaveTypeService : ILeaveTypeService
@@ -59,14 +42,14 @@ namespace LeaveManagementSystem.Web.ServiceLayer
 
         public async Task Create(LeaveTypeCreateVM leaveTypeCreateVm)
         {
-            var leaveType = _mapper.Map<LeaveType>(leaveTypeCreateVm);
+            var leaveType = _mapper.Map<Data.LeaveType>(leaveTypeCreateVm);
             _context.Add(leaveType);
             await _context.SaveChangesAsync();
         }
 
         public async Task Edit(LeaveTypeEditVM leaveTypeEditVm)
         {
-            var leaveType = _mapper.Map<LeaveType>(leaveTypeEditVm);
+            var leaveType = _mapper.Map<Data.LeaveType>(leaveTypeEditVm);
             _context.Update(leaveType);
             await _context.SaveChangesAsync();
         }

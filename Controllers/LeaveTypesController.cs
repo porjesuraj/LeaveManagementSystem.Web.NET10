@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.Models.LeaveType;
-using LeaveManagementSystem.Web.ServiceLayer;
 using LeaveManagementSystem.Web.Common;
+using LeaveManagementSystem.Web.ServiceLayer.LeaveType;
 
 namespace LeaveManagementSystem.Web.Controllers
 {

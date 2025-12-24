@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
+using LeaveManagementSystem.Web.ServiceLayer.LeaveAllocation;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.CodeAnalysis.Elfie.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,8 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly RoleManager<IdentityRole> _roleManager;    
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ILeaveAllocationsService _leaveAllocationsService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -27,7 +29,7 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager, ILeaveAllocationsService leaveAllocationsService)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -36,6 +38,7 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _leaveAllocationsService = leaveAllocationsService;
         }
 
         /// <summary>
@@ -161,6 +164,9 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
 
                     await _userManager.AddToRoleAsync(user, Input.RoleName);
                     var userId = await _userManager.GetUserIdAsync(user);
+
+                    await _leaveAllocationsService.AllocateLeave(userId);
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
