@@ -16,5 +16,6 @@ namespace LeaveManagementSystem.Web.ServiceLayer.LeaveType
         bool LeaveTypeExists(int id);
         bool CheckLeaveNameTypeExist(LeaveTypeEditVM leaveTypeEditVM);
         bool CheckLeaveNameTypeExist(string name);
+        Task<bool> DaysExceedMaximumAllowed(int leaveTypeId, int days);
     }
 }

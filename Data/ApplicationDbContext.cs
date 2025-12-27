@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using LeaveManagementSystem.Web.Models;
 
 namespace LeaveManagementSystem.Web.Data
 {
@@ -68,6 +69,8 @@ namespace LeaveManagementSystem.Web.Data
         public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
 
         public DbSet<Period> Periods { get; set; }
+        public DbSet<LeaveManagementSystem.Web.Models.EmployeeAllocationVM> EmployeeAllocationVM { get; set; } = default!;
+        public DbSet<LeaveManagementSystem.Web.Models.EmployeeListVM> EmployeeListVM { get; set; } = default!;
 
 
 

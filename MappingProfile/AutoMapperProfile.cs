@@ -14,11 +14,7 @@ namespace LeaveManagementSystem.Web.MappingProfile
             // CreateMap<SourceModel, DestinationModel>();
 
             //    CreateMap<LeaveType, IndexViewModel>().ForMember(dest => dest.Days, opt => opt.MapFrom(src => src.NumberOfDays));
-            CreateMap<LeaveType, LeaveReadOnlyViewModel>().ReverseMap();
-
-            CreateMap<LeaveTypeCreateVM, LeaveType>();
-
-            CreateMap<LeaveTypeEditVM, LeaveType>().ReverseMap();
+           
 
         }
     }
