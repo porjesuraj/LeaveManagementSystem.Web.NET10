@@ -4,6 +4,7 @@ using LeaveManagementSystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagementSystem.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251229110503_AddedLeaveRequestTables")]
+    partial class AddedLeaveRequestTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,7 +105,7 @@ namespace LeaveManagementSystem.Web.Data.Migrations
                         {
                             Id = "a1b2c3d4-e5f6-4789-9012-3456789abcde",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "281c4365-426a-405b-9aec-696cec0a419e",
+                            ConcurrencyStamp = "e8c447bf-71e3-484c-9068-18b306e09b99",
                             DateOfBirth = new DateOnly(1994, 1, 1),
                             Email = "test@gmail.com",
                             EmailConfirmed = true,
@@ -111,9 +114,9 @@ namespace LeaveManagementSystem.Web.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@GMAIL.COM",
                             NormalizedUserName = "TEST@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK0pst5SCECO8Ha4cRAE0uFYxsZRR72anO0MuX4lR81YqzGvW5PeT4OvOKP+dQUYFw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENUAay6wRLLGE6F66fOOhYomS9SsvCuFyc6lsLEmBQsRmi/oU7XfMyO4uHLllG3Wkw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8696a930-d337-4fdd-8547-0055c69b57b2",
+                            SecurityStamp = "639a702d-7f64-425c-a86b-bff9f29cdc2a",
                             TwoFactorEnabled = false,
                             UserName = "test@gmail.com"
                         });
@@ -229,11 +232,6 @@ namespace LeaveManagementSystem.Web.Data.Migrations
                         {
                             Id = 3,
                             Name = "Rejected"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Cancelled"
                         });
                 });
 
@@ -310,21 +308,21 @@ namespace LeaveManagementSystem.Web.Data.Migrations
                         new
                         {
                             Id = "e8f1d839-62bb-470d-a1a7-3067e9c5ba0b",
-                            ConcurrencyStamp = "b5c35263-e44a-4997-bdce-e2f312acf12f",
+                            ConcurrencyStamp = "1a730b02-f6a0-4abf-bba0-6393f4871b24",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "59441cdd-e751-49fa-8459-385a0f9a7167",
-                            ConcurrencyStamp = "7a4597af-2645-4a1b-ab0b-5763d2a89350",
+                            ConcurrencyStamp = "0fe46269-3153-48a4-b9a2-33573b8b1ac6",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
                             Id = "8ca30d05-5dc6-4a0c-95ed-537048384a1e",
-                            ConcurrencyStamp = "09fb2118-e1ac-45bc-8790-2344ef1cb5fd",
+                            ConcurrencyStamp = "a3506abd-8cc5-41c4-af0f-0cceabb0a842",
                             Name = "Supervisor",
                             NormalizedName = "SUPERVISOR"
                         });

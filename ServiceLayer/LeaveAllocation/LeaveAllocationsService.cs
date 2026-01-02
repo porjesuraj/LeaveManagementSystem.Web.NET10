@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.Models;
+using LeaveManagementSystem.Web.ServiceLayer.Periods;
 using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagementSystem.Web.ServiceLayer.LeaveAllocation
 {
     public class LeaveAllocationsService(ApplicationDbContext _context,
-        IHttpContextAccessor _httpContextAccessor, UserManager<ApplicationUser> _userManager, IMapper _mapper) : ILeaveAllocationsService
+        IHttpContextAccessor _httpContextAccessor, UserManager<ApplicationUser> _userManager, IMapper _mapper, IPeriodService _periodService) : ILeaveAllocationsService
     {
         public async Task AllocateLeave(string employeeId)
         {
@@ -157,7 +159,16 @@ namespace LeaveManagementSystem.Web.ServiceLayer.LeaveAllocation
 
         }
 
+        public async Task<Data.LeaveAllocation> GetCurrentALlocation(int leaveTypeId, string employeeId)
+        {
+            var period = await _periodService.GetCurrentPeriod();
 
-    
+            var allocation = await _context.LeaveAllocations.FirstAsync(q => q.LeaveTypeId == leaveTypeId && q.EmployeeId == employeeId && q.PeriodId == period.Id);
+
+            return allocation;
+        }
+
+
+
     }
 }

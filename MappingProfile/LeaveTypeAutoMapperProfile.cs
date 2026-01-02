@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LeaveManagementSystem.Web.Models.LeaveRequest;
 using LeaveManagementSystem.Web.Models.LeaveType;
 
 namespace LeaveManagementSystem.Web.MappingProfile
@@ -13,6 +14,20 @@ namespace LeaveManagementSystem.Web.MappingProfile
             CreateMap<LeaveTypeCreateVM, LeaveType>();
 
             CreateMap<LeaveTypeEditVM, LeaveType>().ReverseMap();
+        }
+    }
+
+
+    public class LeaveRequestAutoMapperProfile : Profile
+    {
+
+        public LeaveRequestAutoMapperProfile()
+        {
+            CreateMap<LeaveRequest, LeaveRequestCreateVM>().ReverseMap();
+
+           // CreateMap<LeaveRequestListVM, LeaveRequest>();
+
+          //  CreateMap<EmployeeLeaveRequestListVM, LeaveRequest>().ReverseMap();
         }
     }
 }

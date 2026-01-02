@@ -1,7 +1,10 @@
 using LeaveManagementSystem.Web.Data;
 using LeaveManagementSystem.Web.ServiceLayer.Email;
 using LeaveManagementSystem.Web.ServiceLayer.LeaveAllocation;
+using LeaveManagementSystem.Web.ServiceLayer.LeaveRequest;
 using LeaveManagementSystem.Web.ServiceLayer.LeaveType;
+using LeaveManagementSystem.Web.ServiceLayer.Periods;
+using LeaveManagementSystem.Web.ServiceLayer.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -27,6 +30,10 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddScoped<ILeaveAllocationsService, LeaveAllocationsService>();
+builder.Services.AddScoped<ILeaveRequestsService, LeaveRequestsService>();
+builder.Services.AddScoped<IPeriodService, PeriodService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();

@@ -16,6 +16,7 @@ PSEUDOCODE PLAN:
 @{
     ViewData["Title"] = "View Allocations";
     var isAdmin = User.IsInRole(Roles.Administrator) || User.IsInRole(Roles.Supervisor);
+    var isEmployee = User.IsInRole(Roles.Employee) ;
     string message = isAdmin ? "There are no allocations" : "You are no Allocation. Please contact your administrator";
 
 }
@@ -27,6 +28,10 @@ PSEUDOCODE PLAN:
 @if (isAdmin)
 {
     <a asp-action="Index" class="btn btn-primary">Back to List</a>
+}
+@if (isEmployee)
+{
+    <a asp-asp-controller="LeaveRequests" action="Index" class="btn btn-primary">View Request History</a>
 }
 <div class="row">
     <div class="col-12 col-md-4 mb-3">
@@ -104,7 +109,7 @@ PSEUDOCODE PLAN:
                                        <br/>
                                        }
                                        <td>
-                                            <a asp-action="RequestLeave" asp-route-id="@alloc?.Id" class="btn btn-primary">Request Leave</a>
+                                            <a asp-controller="LeaveRequests" asp-action="Create" asp-route-id="@alloc.Id" class="btn btn-primary">Request Leave</a>
                                        </td>
                                     </tr>
                                 }

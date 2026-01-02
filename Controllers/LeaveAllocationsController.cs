@@ -22,7 +22,7 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(employeeVM);
         }
 
-        [Authorize(Roles = Roles.Administrator + "," + Roles.Supervisor)]
+        [Authorize(Roles = Roles.Administrator)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AllocateLeave(string? id)

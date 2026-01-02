@@ -1,0 +1,139 @@
+﻿@model EmployeeLeaveRequestListVM
+
+@{
+    ViewData["Title"] = "View Leave Requests";
+}
+
+<h1>Admin Leave Request View</h1>
+
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title text-primary">@Model.TotalRequests</h1>
+                <h1 class="card-text"> @Html.DisplayNameFor(Model => Model.TotalRequests)</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title text-success">@Model.ApprovedRequests </h1>
+                <h1 class="card-text"> @Html.DisplayNameFor(Model => Model.ApprovedRequests)</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title text-warning">@Model.PendingRequests </h1>
+                <h1 class="card-text"> @Html.DisplayNameFor(Model => Model.PendingRequests)</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title text-danger">@Model.RejectedRequests </h1>
+                <h1 class="card-text"> @Html.DisplayNameFor(Model => Model.RejectedRequests)</h1>
+            </div>
+
+        </div>
+    </div>
+
+    <hr/>
+    @if(Model.LeaveRequests.Count == 0)
+    {
+        <div class="alert alert-info">
+            <h3> There are no request </h3>
+        </div>
+    }
+    else
+    {
+        <h2> Leave Request</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeaveRequests[0].LeaveType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeaveRequests[0].StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeaveRequests[0].EndDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeaveRequests[0].NumberOfDays)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeaveRequests[0].LeaveRequestStatus)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.LeaveRequests)
+                {
+
+                    var className = string.Empty;
+                    if (item.LeaveRequestStatus == LeaveRequestStatusEnum.Approved)
+                    {
+                        className = "bg-success";
+                    }
+                    else if (item.LeaveRequestStatus == LeaveRequestStatusEnum.Rejected)
+                    {
+                        className = "bg-danger";
+                    }
+                    else if (item.LeaveRequestStatus == LeaveRequestStatusEnum.Pending)
+                    {
+                        className = "bg-warning";
+                    }
+                    else if (item.LeaveRequestStatus == LeaveRequestStatusEnum.Cancelled)
+                    {
+                        className = "bg-dark";
+                    }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LeaveType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberOfDays)
+                        </td>
+                        <td>
+                            <span class="badge rounded-pill text-bg-secondary @className">@item.LeaveRequestStatus.ToString() </span>
+                        </td>
+                        @if (item.LeaveRequestStatus == LeaveRequestStatusEnum.Pending)
+                        {
+                            <td>
+                                <a asp-action="Review" asp-route-id="@item.Id"  name="id" class="btn btn-primary">Review</a>
+
+                            </td>
+                        }
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    }
+
+</div>
+
+
+
